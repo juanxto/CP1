@@ -9,18 +9,35 @@ export default function NoteScreen({ route, navigation }) {
   const [titulo, setTitulo] = useState(nota?.titulo || "");
 
   const salvar = async () => {
-    if (nota) {
-      await updateDoc(doc(db, "notas", nota.id), {
-        titulo
-      });
-    } else {
-      await addDoc(collection(db, "notas"), {
-        titulo,
-        userId: auth.currentUser.uid
-      });
-    }
+    const user = auth.currentUser;
+    if (!user) return;
 
-    navigation.navigate("Home");
+    if (!titulo.trim()) return;
+
+    try {
+      if (nota) {
+        //Editar nota
+        await updateDoc(
+          doc(db, "usuarios", user.uid, "notas", nota.id),
+          {
+            titulo,
+          }
+        );
+      } else {
+        //Criar nota
+        await addDoc(
+          collection(db, "usuarios", user.uid, "notas"),
+          {
+            titulo,
+            criadoEm: new Date(),
+          }
+        );
+      }
+
+    navigation.goBack();
+    } catch (error) {
+      console.error("Erro ao salvar nota:", error);
+    }
   };
 
   return (

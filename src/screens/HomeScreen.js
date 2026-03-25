@@ -1,43 +1,76 @@
 import { useEffect, useState } from "react";
 import { View, Text, Button, FlatList } from "react-native";
 import { auth, db } from "../services/firebaseConfig";
-import { collection, query, where, getDocs, deleteDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  query,
+  onSnapshot,
+  deleteDoc,
+  doc,
+  orderBy,
+} from "firebase/firestore";
+import { signOut } from "firebase/auth";
 
 export default function HomeScreen({ navigation }) {
   const [notas, setNotas] = useState([]);
 
-  const carregarNotas = async () => {
+  //Listar notas
+   useEffect(() => {
+    const user = auth.currentUser;
+    if (!user) return;
+
     const q = query(
-      collection(db, "notas"),
-      where("userId", "==", auth.currentUser.uid)
+      collection(db, "usuarios", user.uid, "notas"),
+      orderBy("criadoEm", "desc")
     );
 
-    const snapshot = await getDocs(q);
-    const lista = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const lista = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
 
-    setNotas(lista);
-  };
+      setNotas(lista);
+    });
 
-  useEffect(() => {
-    carregarNotas();
+    return unsubscribe;
   }, []);
 
+  //Deletar Nota
   const deletarNota = async (id) => {
-    await deleteDoc(doc(db, "notas", id));
-    carregarNotas();
+    const user = auth.currentUser;
+    if (!user) return;
+
+    await deleteDoc(doc(db, "usuarios", user.uid, "notas", id));
+  };
+
+
+  //LogOff
+  const realizarLogoff = async () => {
+    try {
+      await signOut(auth);
+      navigation.replace("Login");
+    } catch (error) {
+      console.error("Erro ao fazer logoff:", error);
+    }
   };
 
   return (
     <View>
       <Button title="Nova Nota" onPress={() => navigation.navigate("Note")} />
+      <Button title="Realizar logoff" onPress={realizarLogoff} />
 
       <FlatList
         data={notas}
         keyExtractor={(item) => item.id}
+        ListEmptyComponent={<Text>Nenhuma nota encontrada</Text>}
         renderItem={({ item }) => (
           <View>
             <Text>{item.titulo}</Text>
-            <Button title="Editar" onPress={() => navigation.navigate("Note", { nota: item })} />
+            <Button
+              title="Editar"
+              onPress={() => navigation.navigate("Note", { nota: item })}
+            />
             <Button title="Excluir" onPress={() => deletarNota(item.id)} />
           </View>
         )}
