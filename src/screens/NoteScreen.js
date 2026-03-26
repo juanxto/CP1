@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, TextInput, Button } from "react-native";
+import { View, TextInput, Button, StyleSheet, Text} from "react-native";
 import { db, auth } from "../services/firebaseConfig";
 import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
 
@@ -41,9 +41,18 @@ export default function NoteScreen({ route, navigation }) {
   };
 
   return (
-    <View>
-      <TextInput value={titulo} onChangeText={setTitulo} placeholder="Título" />
+    <View style={{flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#E8DFDF"}}>
+      <Text style={{fontWeight: 800, fontSize: 30, marginBottom: 20}}>Edite seu texto
+      </Text>
+      <TextInput style={styles.textInput} value={titulo} onChangeText={setTitulo} placeholder="Título" />
       <Button title="Salvar" onPress={salvar} />
     </View>
   );
 }
+const styles = StyleSheet.create({
+  textInput: {
+    backgroundColor: "white",
+    paddingHorizontal: 80,
+    borderRadius: 20
+  }
+})
