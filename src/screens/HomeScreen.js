@@ -49,7 +49,6 @@ export default function HomeScreen({ navigation }) {
   const realizarLogoff = async () => {
     try {
       await signOut(auth);
-      navigation.replace("Login");
     } catch (error) {
       console.error("Erro ao fazer logoff:", error);
     }
