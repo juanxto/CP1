@@ -21,3 +21,6 @@ ___
 | Vinicius Kenzo Tocuyosi    | 559982 |
 | Juan Pablo Rebelo Coelho   | 560445 |
 
+
+## Link do video
+[Link do video](https://youtu.be/RpfLP86Tr3M)
