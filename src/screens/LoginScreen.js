@@ -19,7 +19,7 @@ export default function LoginScreen({navigation}) {
     return (
         <View style={styles.container}>
             <TextInput style={styles.textInput} placeholder="Email" onChangeText={setEmail}/>
-            <TextInput style={styles.textInput} placeholder="Senha" secureTextEntry onChangeText={setSenha}/>
+            <TextInput style={styles.textInput} placeholder="Senha" secureTextEntry={true} onChangeText={setSenha}/>
             <TouchableOpacity onPress={login}>
                 <View style={styles.botao}>
                     <Text style={styles.textoBotao}>Entrar</Text>
@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#E8DFDF",
-
     },
     textInput: {
         backgroundColor: "white",

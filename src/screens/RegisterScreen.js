@@ -16,7 +16,6 @@ export default function RegisterScreen({ navigation }) {
       Alert.alert("Erro", error.message);
     }
   };
-
   return (
     <View style={styles.container}>
       <TextInput style={styles.textInput} placeholder="Email" onChangeText={setEmail} />
@@ -52,7 +51,8 @@ const styles = StyleSheet.create({
     backgroundColor: "blue",
     paddingWidth: 20,
     paddingHorizontal: 40,
-    marginBottom: 10
+    marginBottom: 10,
+
   },
   textoBotao:{
     color: "white",
