@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, TextInput, Button, Alert } from "react-native";
+import { View, TextInput,TouchableOpacity , Alert, StyleSheet, Text} from "react-native";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../services/firebaseConfig";
 
@@ -18,10 +18,44 @@ export default function RegisterScreen({ navigation }) {
   };
 
   return (
-    <View>
-      <TextInput placeholder="Email" onChangeText={setEmail} />
-      <TextInput placeholder="Senha" secureTextEntry onChangeText={setSenha} />
-      <Button title="Cadastrar" onPress={register} />
+    <View style={styles.container}>
+      <TextInput style={styles.textInput} placeholder="Email" onChangeText={setEmail} />
+      <TextInput style={styles.textInput} placeholder="Senha" secureTextEntry onChangeText={setSenha} />
+      <TouchableOpacity onPress={register}>
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            CADASTRAR
+          </Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#E8DFDF",
+
+  },
+  textInput: {
+    backgroundColor: "white",
+    paddingHorizontal: 120,
+    borderColor: "black",
+    borderRadius: 20,
+    marginBottom: 5,
+  },
+  botao: {
+    borderRadius: 30,
+    marginTop: 5,
+    backgroundColor: "blue",
+    paddingWidth: 20,
+    paddingHorizontal: 40,
+    marginBottom: 10
+  },
+  textoBotao:{
+    color: "white",
+    fontSize: 25
+  },
+})
