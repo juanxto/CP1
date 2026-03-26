@@ -41,31 +41,34 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         {user ? (
-          // 🔒 Usuário LOGADO
           <>
             <Stack.Screen
               name="Home"
               component={HomeScreen}
-              options={{ title: "Minhas Notas" }}
+              options={{ title: "Minhas Notas",
+                headerShown: false,}}
             />
             <Stack.Screen
               name="Note"
               component={NoteScreen}
-              options={{ title: "Nota" }}
+              options={{ title: "Nota" ,
+                headerShown: false,}}
             />
           </>
         ) : (
-          // 🔓 Usuário NÃO logado
           <>
             <Stack.Screen
               name="Login"
               component={LoginScreen}
-              options={{ title: "Login" }}
+              options={{ title: "Login",
+                headerShown: false }}
+
             />
             <Stack.Screen
               name="Register"
               component={RegisterScreen}
-              options={{ title: "Cadastro" }}
+              options={{ title: "Cadastro" ,
+                headerShown: false,}}
             />
           </>
         )}
