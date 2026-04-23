@@ -29,5 +29,17 @@
   "language": {
     "pt": "🇧🇷 PT",
     "en": "🇺🇸 EN"
+  },
+  "permissions": {
+    "notification_denied_title": "Permission denied",
+    "notification_denied_msg": "Enable notifications to receive confirmations."
+  },
+  "notifications": {
+    "welcome_title": "Welcome!",
+    "welcome_body": "Login successful.",
+    "note_created_title": "Note created!",
+    "note_created_body": "was saved successfully.",
+    "note_updated_title": "Note updated!",
+    "note_updated_body": "was updated successfully."
   }
 }

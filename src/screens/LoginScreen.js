@@ -3,6 +3,10 @@ import {View, TextInput, Button, Alert, StyleSheet, TouchableOpacity, Text} from
 import {signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../services/firebaseConfig";
 import { useTranslation } from "react-i18next";
+import {
+  registrarParaNotificacoes,
+  enviarNotificacaoBemVindo,
+} from "../services/notificacoes";
 
 export default function LoginScreen({navigation}) {
     const { t } = useTranslation();
@@ -12,6 +16,11 @@ export default function LoginScreen({navigation}) {
     const login = async () => {
         try {
             await signInWithEmailAndPassword(auth, email, senha);
+
+            const permitido = await registrarParaNotificacoes(t);
+            if (permitido) {
+                await enviarNotificacaoBemVindo(t);
+            }
 
         } catch (error) {
             Alert.alert("Erro", t("login.error"));

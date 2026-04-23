@@ -3,6 +3,10 @@ import { View, TextInput, Button, StyleSheet, Text} from "react-native";
 import { db, auth } from "../services/firebaseConfig";
 import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
+import {
+  enviarNotificacaoNotaCriada,
+  enviarNotificacaoNotaAtualizada,
+} from "../services/notificacoes";
 
 export default function NoteScreen({ route, navigation }) {
   const nota = route.params?.nota;
@@ -25,6 +29,7 @@ export default function NoteScreen({ route, navigation }) {
             titulo,
           }
         );
+        await enviarNotificacaoNotaAtualizada(titulo, t);
       } else {
         //Criar nota
         await addDoc(
@@ -34,6 +39,7 @@ export default function NoteScreen({ route, navigation }) {
             criadoEm: new Date(),
           }
         );
+        await enviarNotificacaoNotaCriada(titulo, t);
       }
 
     navigation.goBack();
