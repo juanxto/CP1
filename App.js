@@ -7,6 +7,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { auth } from "./src/services/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 
+import "./src/i18n";
+
 // Telas
 import LoginScreen from "./src/screens/LoginScreen";
 import RegisterScreen from "./src/screens/RegisterScreen";

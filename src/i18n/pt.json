@@ -1,0 +1,33 @@
+{
+  "login": {
+    "email": "Email",
+    "password": "Senha",
+    "button": "Entrar",
+    "register": "Cadastrar",
+    "error": "Login inválido"
+  },
+  "register": {
+    "email": "Email",
+    "password": "Senha",
+    "button": "CADASTRAR",
+    "success": "Conta criada!",
+    "success_title": "Sucesso"
+  },
+  "home": {
+    "title": "Minhas Notas",
+    "new_note": "Nova Nota",
+    "empty": "Nenhuma nota encontrada",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "logout": "Realizar logoff"
+  },
+  "note": {
+    "title": "Edite seu texto",
+    "placeholder": "Título",
+    "save": "Salvar"
+  },
+  "language": {
+    "pt": "🇧🇷 PT",
+    "en": "🇺🇸 EN"
+  }
+}

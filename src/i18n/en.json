@@ -1,0 +1,33 @@
+{
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "button": "Sign In",
+    "register": "Register",
+    "error": "Invalid login"
+  },
+  "register": {
+    "email": "Email",
+    "password": "Password",
+    "button": "REGISTER",
+    "success": "Account created!",
+    "success_title": "Success"
+  },
+  "home": {
+    "title": "My Notes",
+    "new_note": "New Note",
+    "empty": "No notes found",
+    "edit": "Edit",
+    "delete": "Delete",
+    "logout": "Sign out"
+  },
+  "note": {
+    "title": "Edit your note",
+    "placeholder": "Title",
+    "save": "Save"
+  },
+  "language": {
+    "pt": "🇧🇷 PT",
+    "en": "🇺🇸 EN"
+  }
+}

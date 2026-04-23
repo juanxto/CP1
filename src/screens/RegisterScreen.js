@@ -2,15 +2,17 @@ import { useState } from "react";
 import { View, TextInput,TouchableOpacity , Alert, StyleSheet, Text} from "react-native";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../services/firebaseConfig";
+import { useTranslation } from "react-i18next";
 
 export default function RegisterScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const { t } = useTranslation();
 
   const register = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, senha);
-      Alert.alert("Sucesso", "Conta criada!");
+      Alert.alert(t("register.success_title"), t("register.success"));
       navigation.navigate("Login");
     } catch (error) {
       Alert.alert("Erro", error.message);
@@ -18,13 +20,11 @@ export default function RegisterScreen({ navigation }) {
   };
   return (
     <View style={styles.container}>
-      <TextInput style={styles.textInput} placeholder="Email" onChangeText={setEmail} />
-      <TextInput style={styles.textInput} placeholder="Senha" secureTextEntry onChangeText={setSenha} />
+      <TextInput style={styles.textInput} placeholder={t("register.email")} onChangeText={setEmail} />
+      <TextInput style={styles.textInput} placeholder={t("register.password")} secureTextEntry onChangeText={setSenha} />
       <TouchableOpacity onPress={register}>
         <View style={styles.botao}>
-          <Text style={styles.textoBotao}>
-            CADASTRAR
-          </Text>
+          <Text style={styles.textoBotao}>{t("register.button")}</Text>
         </View>
       </TouchableOpacity>
     </View>
