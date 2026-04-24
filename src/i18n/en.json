@@ -22,9 +22,11 @@
     "logout": "Sign out"
   },
   "note": {
-    "title": "Edit your note",
+    "title_new": "New Note",
+    "title_edit": "Edit your note",
     "placeholder": "Title",
-    "save": "Save"
+    "save": "Save",
+    "map_title": "Creation location"
   },
   "language": {
     "pt": "🇧🇷 PT",
@@ -32,7 +34,9 @@
   },
   "permissions": {
     "notification_denied_title": "Permission denied",
-    "notification_denied_msg": "Enable notifications to receive confirmations."
+    "notification_denied_msg": "Enable notifications to receive confirmations.",
+    "location_denied_title": "Permission denied",
+    "location_denied_msg": "We need your location to save where the note was created."
   },
   "notifications": {
     "welcome_title": "Welcome!",

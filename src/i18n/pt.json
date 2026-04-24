@@ -22,9 +22,11 @@
     "logout": "Realizar logoff"
   },
   "note": {
-    "title": "Edite seu texto",
+    "title_new": "Nova Nota",
+    "title_edit": "Edite seu texto",
     "placeholder": "Título",
-    "save": "Salvar"
+    "save": "Salvar",
+    "map_title": "Local de criação"
   },
   "language": {
     "pt": "🇧🇷 PT",
@@ -32,7 +34,9 @@
   },
   "permissions": {
     "notification_denied_title": "Permissão negada",
-    "notification_denied_msg": "Ative as notificações para receber confirmações."
+    "notification_denied_msg": "Ative as notificações para receber confirmações.",
+    "location_denied_title": "Permissão negada",
+    "location_denied_msg": "Precisamos da sua localização para salvar onde a nota foi criada."
   },
   "notifications": {
     "welcome_title": "Bem-vindo!",
